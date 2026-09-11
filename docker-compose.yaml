@@ -1,0 +1,32 @@
+services:
+  notes:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: notes-app:latest
+    container_name: notes-app
+    restart: unless-stopped
+
+    environment:
+      PORT: "3000"
+      NOTES_DIR: /app/notes
+      NODE_ENV: production
+
+    volumes:
+      - ./notes:/app/notes:ro
+
+    ports:
+      - "127.0.0.1:3000:3000"
+
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: "0.5"
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
