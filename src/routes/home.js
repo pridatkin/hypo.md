@@ -1,13 +1,13 @@
 const express = require("express");
 const { NOTES_DIR } = require("../config");
-const { scanDir } = require("../notes/scan");
+const { getTree } = require("../notes/cache");
 const { renderTree } = require("../views/tree");
 const { page } = require("../views/page");
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  const tree = scanDir(NOTES_DIR);
+  const tree = getTree();
   res.send(
     page({
       title: "Заметки",

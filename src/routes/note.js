@@ -1,7 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const { NOTES_DIR } = require("../config");
-const { scanDir } = require("../notes/scan");
+const { getTree } = require("../notes/cache");
 const { findBySlugs } = require("../notes/find");
 const { renderTree } = require("../views/tree");
 const { page } = require("../views/page");
@@ -14,7 +14,7 @@ router.get("/{*path}", (req, res, next) => {
   const segs = req.params.path || [];
   const parts = (Array.isArray(segs) ? segs : [segs]).filter(Boolean);
 
-  const tree = scanDir(NOTES_DIR);
+  const tree = getTree();
   const file = findBySlugs(tree, parts);
   if (!file) return next();
 
