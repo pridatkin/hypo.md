@@ -54,8 +54,8 @@ function page({ title, treeHtml, contentHtml = "" }) {
   </aside>
 
   <main>
-    <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-      <button class="icon-btn" id="menu-toggle" type="button"
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px; position: fixed; right:16px;">
+      <button class="icon-btn menu-btn" id="menu-toggle" type="button"
               title="Открыть меню" aria-label="Открыть меню">☰</button>
     </div>
     ${contentHtml}

@@ -6,7 +6,7 @@ function renderTree(items, currentPath = []) {
     const itemPath = [...currentPath, item.slug];
     if (item.type === "dir") {
       html += `<li class="dir">
-        <details open>
+        <details>
           <summary>${escapeHtml(item.name)}</summary>
           ${renderTree(item.children, itemPath)}
         </details>

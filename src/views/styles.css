@@ -265,6 +265,12 @@ main th {
     background-color 0.15s ease,
     border-color 0.15s ease;
 }
+
+.menu-btn {
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+}
 .icon-btn:hover {
   background: var(--link-hover-bg);
   border-color: var(--accent);
