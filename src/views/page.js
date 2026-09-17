@@ -5,7 +5,7 @@ const { escapeHtml } = require("../utils/html");
 const CSS = fs.readFileSync(path.join(__dirname, "styles.css"), "utf8");
 const CLIENT_JS = fs.readFileSync(path.join(__dirname, "client.js"), "utf8");
 
-function page({ title, treeHtml, contentHtml = "", isIndex = false }) {
+function page({ title, treeHtml, contentHtml = "" }) {
   return `<!doctype html>
 <html lang="ru" data-theme="light">
 <head>
@@ -58,11 +58,7 @@ function page({ title, treeHtml, contentHtml = "", isIndex = false }) {
       <button class="icon-btn" id="menu-toggle" type="button"
               title="Открыть меню" aria-label="Открыть меню">☰</button>
     </div>
-    ${
-      isIndex
-        ? "<h1>Список заметок</h1><p>Выберите заметку в дереве слева.</p>"
-        : contentHtml
-    }
+    ${contentHtml}
   </main>
 </div>
 

@@ -12,6 +12,7 @@ const router = express.Router();
 
 router.get("/{*path}", (req, res, next) => {
   const segs = req.params.path || [];
+  console.log(req.params.path);
   const parts = (Array.isArray(segs) ? segs : [segs]).filter(Boolean);
 
   const tree = getTree();

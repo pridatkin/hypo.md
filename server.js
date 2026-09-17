@@ -1,7 +1,8 @@
 const express = require("express");
-const { PORT, NOTES_DIR } = require("./src/config");
+const { PORT, NOTES_DIR, HOME_NOTE } = require("./src/config");
 const homeRouter = require("./src/routes/home");
 const noteRouter = require("./src/routes/note");
+const notFoundHandler = require("./src/routes/not-found");
 const {
   startWatching,
   stopWatching,
@@ -10,14 +11,18 @@ const {
 
 const app = express();
 
+// app.get("/", (req, res) => {
+//   res.redirect("/index");
+// });
+
 app.use(homeRouter);
 app.use(noteRouter);
-
-app.use((req, res) => res.status(404).send("Заметка не найдена"));
+app.use(notFoundHandler);
 
 const server = app.listen(PORT, () => {
   console.log(`Сервер запущен: http://localhost:${PORT}`);
   console.log(`Каталог заметок: ${NOTES_DIR}`);
+  console.log(`Главая заметка: ${HOME_NOTE}`);
 
   // Запускаем слежение за директорией заметок.
   // Если платформа не поддерживает recursive watch —

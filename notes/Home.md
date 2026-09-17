@@ -1,4 +1,4 @@
-# Hypo.md
+# README.md
 
 A tiny, self-hosted Markdown notes server. Drop your `.md` files into a
 folder, run the server, and browse them through a clean web interface with a
